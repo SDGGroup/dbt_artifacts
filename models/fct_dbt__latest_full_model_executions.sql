@@ -16,7 +16,8 @@ latest_full as (
 
     select *
     from run_results
-    where selected_models is null and was_full_refresh = false
+    --where selected_models is null and was_full_refresh = false
+    where {{ var('full_exec_filter') }}
     order by artifact_generated_at desc
     limit 1
 
