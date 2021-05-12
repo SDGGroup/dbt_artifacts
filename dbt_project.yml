@@ -3,6 +3,9 @@ version: '0.1.0'
 config-version: 2
 require-dbt-version: ">=0.19.0"
 
+vars:
+  full_exec_filter: '1=1'
+
 models:
   dbt_artifacts:
     +schema: default_dbt_artifacts_schema
