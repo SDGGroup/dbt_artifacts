@@ -182,6 +182,7 @@ longest_path_node_ids as (
         end as node_ids,
         total_time
     from search_path
+    where total_time is not null
     order by total_time desc
     limit 1
 
