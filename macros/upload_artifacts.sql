@@ -41,8 +41,8 @@
 
 {% endfor %}
 
-{% do log("Clearing new files from Stage: " ~ remove_query, info=True) %}
-{% do run_query(remove_query) %}
+{# {% do log("Clearing new files from Stage: " ~ remove_query, info=True) %}
+{% do run_query(remove_query) %} #}
 
 {% endmacro %}
 
