@@ -33,7 +33,9 @@ fields as (
         data:args:which::string as execution_command,
         coalesce(data:args:full_refresh, 'false')::boolean as was_full_refresh,
         data:args:models as selected_models,
-        data:args:target::string as target
+        data:args:target::string as target,
+        data:args:vars as vars
+        
     from dbt_run
 
 )

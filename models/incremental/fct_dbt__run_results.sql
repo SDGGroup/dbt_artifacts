@@ -32,7 +32,8 @@ fields as (
         execution_command,
         selected_models,
         target,
-        was_full_refresh
+        was_full_refresh,
+        vars
 
         {% if env_keys %}
         -- Environment keys are sorted for determinism.
