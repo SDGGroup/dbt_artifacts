@@ -28,7 +28,9 @@ joined as (
     select
         model_executions.*
     from latest_full
-    left join model_executions on model_executions.command_invocation_id = latest_full.command_invocation_id
+    left join model_executions on
+        model_executions.command_invocation_id = latest_full.command_invocation_id
+        or model_executions.dbt_cloud_run_id = latest_full.dbt_cloud_run_id
 
 ),
 
@@ -37,6 +39,7 @@ fields as (
     select
         artifact_generated_at,
         command_invocation_id,
+        dbt_cloud_run_id,
         compile_started_at,
         query_completed_at,
         total_node_runtime,

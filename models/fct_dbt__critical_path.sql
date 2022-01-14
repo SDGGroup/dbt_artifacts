@@ -16,7 +16,8 @@ latest_id as (
     -- Find the latest full, incremental execution
 
     select
-        any_value(command_invocation_id) as command_invocation_id
+        any_value(command_invocation_id) as command_invocation_id,
+        any_value(dbt_cloud_run_id) as dbt_cloud_run_id
     from latest_executions
 
 ),
@@ -29,7 +30,9 @@ latest_models as (
         models.depends_on_nodes,
         models.model_materialization
     from latest_id
-    left join models on latest_id.command_invocation_id = models.command_invocation_id
+    left join models on
+        latest_id.command_invocation_id = models.command_invocation_id
+        or latest_id.dbt_cloud_run_id = models.dbt_cloud_run_id
 
 
 ),
@@ -162,7 +165,7 @@ search_path (node_ids, total_time) as (
     union all
     select
         array_cat(to_array(all_needed_dependencies.depends_on_node_id), search_path.node_ids) as node_ids,
-        all_needed_dependencies.total_node_runtime + search_path.total_time
+        coalesce(all_needed_dependencies.total_node_runtime, 0) + search_path.total_time
     from search_path
     left join all_needed_dependencies
     where get(search_path.node_ids, 0) = all_needed_dependencies.node_id
