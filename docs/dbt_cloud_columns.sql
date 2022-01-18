@@ -1,0 +1,13 @@
+alter table dwh.dbt_artifacts.DIM_DBT__EXPOSURES add DBT_CLOUD_RUN_ID NUMBER;
+alter table dwh.dbt_artifacts.DIM_DBT__MODELS add DBT_CLOUD_RUN_ID NUMBER;
+alter table dwh.dbt_artifacts.DIM_DBT__SOURCES add DBT_CLOUD_RUN_ID NUMBER;
+alter table dwh.dbt_artifacts.FCT_DBT__LATEST_FULL_MODEL_EXECUTIONS add DBT_CLOUD_RUN_ID NUMBER;
+alter table dwh.dbt_artifacts.FCT_DBT__MODEL_EXECUTIONS add DBT_CLOUD_RUN_ID NUMBER;
+alter table dwh.dbt_artifacts.FCT_DBT__RUN_RESULTS add DBT_CLOUD_RUN_ID NUMBER;
+alter table dwh.dbt_artifacts.FCT_DBT__RUN_RESULTS add ENV_DBT_CLOUD_JOB_ID VARIANT;
+alter table dwh.dbt_artifacts.FCT_DBT__RUN_RESULTS add ENV_DBT_CLOUD_PROJECT_ID VARIANT;
+alter table dwh.dbt_artifacts.FCT_DBT__RUN_RESULTS add ENV_DBT_CLOUD_RUN_ID VARIANT;
+alter table dwh.dbt_artifacts.FCT_DBT__RUN_RESULTS add ENV_DBT_CLOUD_RUN_REASON VARIANT;
+alter table dwh.dbt_artifacts.FCT_DBT__RUN_RESULTS add ENV_DBT_CLOUD_RUN_REASON_CATEGORY VARIANT;
+alter table dwh.dbt_artifacts.FCT_DBT__TEST_EXECUTIONS add DBT_CLOUD_RUN_ID NUMBER;
+alter table dwh.dbt_artifacts.INT_DBT__MODEL_EXECUTIONS add DBT_CLOUD_RUN_ID NUMBER;
