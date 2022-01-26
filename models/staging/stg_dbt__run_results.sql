@@ -17,7 +17,7 @@ dbt_run as (
 
     select *
     from run_results
-    where data:args:which = 'run'
+    where data:args:which in ('run', 'build')
 
 ),
 
@@ -32,7 +32,7 @@ fields as (
         data:elapsed_time::float as elapsed_time,
         data:args:which::string as execution_command,
         coalesce(data:args:full_refresh, 'false')::boolean as was_full_refresh,
-        data:args:models as selected_models,
+        data:args:select as selected_models,
         data:args:target::string as target,
         data:args:vars as vars
     from dbt_run
